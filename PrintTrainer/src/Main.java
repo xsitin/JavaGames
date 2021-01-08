@@ -38,8 +38,8 @@ public class Main {
 }
 
 class PrintTrainerKeyListener implements KeyListener {
-    private JFrame frame;
-    private Game game;
+    private final JFrame frame;
+    private final Game game;
 
     PrintTrainerKeyListener(JFrame frame, Game game) {
         this.frame = frame;

@@ -3,8 +3,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 class XCrossKeyListener implements KeyListener {
-    private Grid grid;
-    private JFrame parent;
+    private final Grid grid;
+    private final JFrame parent;
 
     public XCrossKeyListener(Grid grid, JFrame parent) {
         this.grid = grid;
