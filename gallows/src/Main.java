@@ -1,10 +1,36 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Scanner;
 
 enum Result {Win, Lose, Guessed, NotGuessed}
 
 public class Main {
     public static void main(String[] args) {
+        runCli();
+    }
+
+    private static void runCli() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Input lives");
+        int lives = scanner.nextInt();
+        System.out.println("Input word");
+        String word = scanner.next();
+        for (int i = 0; i < 50; i++)
+            System.out.println();
+        Game game = new Game(word, lives);
+        Result result = Result.NotGuessed;
+        while (!result.equals(Result.Win) && !result.equals(Result.Lose) && game.GetLives() > 0) {
+            System.out.println(game.GetRemainder());
+            System.out.println("Lives: "+game.GetLives());
+            result = game.TryGuess(scanner.next().charAt(0));
+        }
+        if (result == Result.Win)
+            System.out.println("You win!");
+        else
+            System.out.println("You lose!");
+    }
+
+    private static void runGui() {
         String word = JOptionPane.showInputDialog("Input word");
         String lives = JOptionPane.showInputDialog("Input lives count");
         Game game = new Game(word, Integer.parseInt(lives));
