@@ -31,7 +31,7 @@ public class Main {
         remainderLabel.setText(game.GetRemainder());
         remainderLabel.setLocation(100, 0);
 
-        var pic = new GallowDrawer(game);
+        GallowDrawer pic = new GallowDrawer(game);
         pic.setBounds(50, 100, 600, 600);
 
         window.addKeyListener(new GallowKeyListener(window, game));

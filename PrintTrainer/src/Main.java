@@ -11,12 +11,12 @@ import java.util.TimerTask;
 public class Main {
     public static void main(String[] args) {
         JOptionPane.showMessageDialog(null, "are u ready?");
-        var window = new JFrame();
-        var panel = new JPanel();
+        JFrame window = new JFrame();
+        JPanel panel = new JPanel();
         window.add(panel);
-        var game = new Game();
+        Game game = new Game();
 
-        var wordPainter = new WordDrawer(game);
+        WordDrawer wordPainter = new WordDrawer(game);
         wordPainter.setBounds(50,50,800,400);
         panel.add(wordPainter);
         panel.setLayout(null);
@@ -48,7 +48,7 @@ class PrintTrainerKeyListener implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        game.TryInputChar(e.getKeyChar());
+        game.InputChar(e.getKeyChar());
         frame.repaint();
     }
 
@@ -84,7 +84,7 @@ class Game {
         CurrentWord = words[random.nextInt(words.length)];
     }
 
-    public boolean TryInputChar(char ch) {
+    public void InputChar(char ch) {
         enteredCharsCount++;
         lastWasMissclick = false;
         if (CurrentWord.charAt(CurrentCharIndex) == ch) {
@@ -94,11 +94,10 @@ class Game {
                 CurrentWord = words[random.nextInt(words.length)];
                 CurrentCharIndex = 0;
             }
-            return true;
+            return;
         }
         lastWasMissclick = true;
         missclickCount++;
-        return false;
     }
 
     public String getCurrentWord() {

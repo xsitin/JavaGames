@@ -32,7 +32,7 @@ class Game {
     }
 
     void update() {
-        var toRemove = new ArrayList<Car>();
+        ArrayList<Car> toRemove = new ArrayList<>();
         for (Car car : cars) {
             car.down();
             if (car.getY() > 510) {
@@ -44,14 +44,14 @@ class Game {
     }
 
     boolean checkCrash() {
-        for (var car : cars)
+        for (Car car : cars)
             if (car.way == playerWay && car.getY() >= 380)
                 return true;
         return false;
     }
 
     Car spawnCar() {
-        var car = new Car();
+        Car car = new Car();
         cars.add(car);
         return car;
     }
