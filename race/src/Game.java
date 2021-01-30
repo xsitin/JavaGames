@@ -27,33 +27,18 @@ class Game {
     }
 
     void ChangePlayerWay(int direction) {
-        if (0 < (playerWay + direction) && (playerWay + direction) < 4)
-            playerWay += direction;
     }
 
     void update() {
-        ArrayList<Car> toRemove = new ArrayList<>();
-        for (Car car : cars) {
-            car.down();
-            if (car.getY() > 510) {
-                toRemove.add(car);
-                Score++;
-            }
-        }
-        cars.removeAll(toRemove);
+
     }
 
     boolean checkCrash() {
-        for (Car car : cars)
-            if (car.way == playerWay && car.getY() >= 380)
-                return true;
-        return false;
+        return true;
     }
 
     Car spawnCar() {
-        Car car = new Car();
-        cars.add(car);
-        return car;
+        return null;
     }
 }
 
