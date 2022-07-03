@@ -6,7 +6,7 @@ enum Result {Win, Lose, Guessed, NotGuessed}
 
 public class Main {
     public static void main(String[] args) {
-        runCli();
+        runGui();
     }
 
     private static void runCli() {

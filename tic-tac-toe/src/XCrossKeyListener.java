@@ -3,11 +3,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 class XCrossKeyListener implements KeyListener {
-    private final Grid grid;
+    private final Game game;
     private final JFrame parent;
 
-    public XCrossKeyListener(Grid grid, JFrame parent) {
-        this.grid = grid;
+    public XCrossKeyListener(Game game, JFrame parent) {
+        this.game = game;
         this.parent = parent;
     }
 
@@ -19,12 +19,12 @@ class XCrossKeyListener implements KeyListener {
             int number = Integer.parseInt(Character.toString(code));
             number--;
             int i = 2-(number / 3);
-            if (grid.cells[i][number % 3] == null)
-                grid.cells[i][number % 3] = grid.GetNextFigure();
+            if (game.cells[i][number % 3] == null)
+                game.cells[i][number % 3] = game.GetNextFigure();
         }
-        if (!grid.GetWinner().equals("nobody")) {
+        if (!game.GetWinner().equals("nobody")) {
             parent.dispose();
-            JOptionPane.showMessageDialog(null, grid.GetWinner());
+            JOptionPane.showMessageDialog(null, game.GetWinner());
             System.exit(0);
         }
     }

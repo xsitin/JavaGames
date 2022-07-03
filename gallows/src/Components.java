@@ -17,7 +17,7 @@ class GallowDrawer extends JComponent {
         this.game = game;
         File directory = new File("gallows/src/Pictures");
         for (File file : Objects.requireNonNull(directory.listFiles()))
-            if (file.isFile() && file.getName().endsWith(".png")) try {
+            if (file.isFile() && file.getName().endsWith(".bmp")) try {
                 images.add(ImageIO.read(file));
             } catch (IOException e) {
                 e.printStackTrace();
@@ -26,7 +26,7 @@ class GallowDrawer extends JComponent {
 
     @Override
     public void paint(Graphics g) {
-        int picNumber = (int) (10 * (game.GetLives() / (double) game.GetMaxLives())) - 1;
+        int picNumber = (int) (10 - 10 * (game.GetLives() / (double) game.GetMaxLives())) - 1;
         if (picNumber < 0)
             return;
         Image img = images.get(picNumber);

@@ -2,10 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 class GridComponent extends JComponent {
-    Grid grid;
+    Game game;
 
-    public GridComponent(Grid grid) {
-        this.grid = grid;
+    public GridComponent(Game game) {
+        this.game = game;
     }
 
     @Override
@@ -16,7 +16,7 @@ class GridComponent extends JComponent {
         g.fillRect(396, 0, 4, 600);
         g.fillRect(0, 196, 600, 4);
         g.fillRect(0, 396, 600, 4);
-        String[][] cells = grid.cells;
+        String[][] cells = game.cells;
         for (int rowNumber = 0, cellsLength = cells.length; rowNumber < cellsLength; rowNumber++) {
             String[] line = cells[rowNumber];
             for (int colNumber = 0, lineLength = line.length; colNumber < lineLength; colNumber++) {
@@ -26,7 +26,8 @@ class GridComponent extends JComponent {
                 if (cell.equals("circle")) {
                     g.setColor(Color.red);
                     g.drawOval(colNumber * 200, rowNumber * 200, 200, 200);
-                } else if (cell.equals("cross")) {
+                }
+                else if (cell.equals("cross")) {
                     g.setColor(Color.blue);
                     int[] xPoints = new int[]{
                             colNumber * 200,
